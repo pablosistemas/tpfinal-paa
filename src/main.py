@@ -1,5 +1,6 @@
 import sys
 import re
+import os
 
 class Node:
     __time = None
@@ -29,39 +30,58 @@ class Graph:
             print(line)
             return None
 
+    def __read_line__(self):
+        pass
+
     def __read__(self, input_file):
         file = open(input_file, 'r')
+        line_n = 0
         line = file.readline()
+        line_n = line_n + 1
         while line != '':
             _node = Node()
             _asn = None
 
+            if not re.match('TIME', line):
+                print(line)
+                raise
+
             _node.__time = self.__parse_line__(line)
             line = file.readline()
+            line_n = line_n + 1
             _node.__type = self.__parse_line__(line)
             line = file.readline()
+            line_n = line_n + 1
             _node.__from = self.__parse_line__(line)
             line = file.readline()
+            line_n = line_n + 1
             _node.__to = self.__parse_line__(line)
 
-            _asn = re.search('.+\s(\w+)', _node.__to).group(1)
+            _asn_source = re.search('.+\s(\w+)', _node.__from).group(1)
+            _asn_dest = re.search('.+\s(\w+)', _node.__to).group(1)
 
             line = file.readline()
+            line_n = line_n + 1
             _node.__origin = self.__parse_line__(line)
             line = file.readline()
+            line_n = line_n + 1
             _node.__as_path = self.__parse_line__(line)
             line = file.readline()
-            while line != '\n': 
+            line_n = line_n + 1
+
+            while line != '\n':
                 line = file.readline()
+                line_n = line_n + 1
 
             self.__nodes.append((_asn, _node)) 
             line = file.readline()
+            line_n = line_n + 1
 
         file.close()
 
 
 def main():
-    input_file = 'data/input_bgp'
+    input_file = '../data/input_bgp'
     g = Graph()
     g.__read__(input_file)
     print(g)
