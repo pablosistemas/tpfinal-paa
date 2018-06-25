@@ -7,7 +7,10 @@
             "type": "python",
             "request": "launch",
             "pythonPath": "/opt/anaconda3/bin/python",
-            "program": "${file}"
+            "program": "${file}",
+            "args": [
+                "data/input_bgp"
+            ]
         },
         {
             "name": "Python: Attach",
