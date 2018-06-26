@@ -6,7 +6,12 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "pythonPath": "/opt/anaconda3/bin/python",
+            "windows": {
+                "pythonPath": "D:/Users/Pablo/Anaconda2/python"
+            },
+            "linux": {
+                "pythonPath": "/opt/anaconda3/bin/python",
+            },
             "program": "${file}",
             "args": [
                 "data/input_bgp"
