@@ -14,7 +14,8 @@
             },
             "program": "${file}",
             "args": [
-                "data/input_bgp"
+                "data/input_bgp",
+                "-m memory_profiler"
             ]
         },
         {

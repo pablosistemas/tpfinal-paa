@@ -67,3 +67,7 @@ def from_coverage_matrix_calculate_num_of_covered_asn(coverage_matrix):
     uncovered_asn = np.any(coverage_matrix, axis=0)
     return coverage_matrix.shape[1] - uncovered_asn.sum()
 
+
+def set_max_number_N_probabilistic_search(percentage=global_var.PERCENT_OF_PROBABILISTIC_CHOICES):
+    global_var.N = int(global_var.sets.__len__() * percentage)
+    return

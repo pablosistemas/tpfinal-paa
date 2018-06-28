@@ -7,7 +7,7 @@ import utils.main as utils
 
 
 # covering_set representss the indexes of sets used in covering
-def from_partial_solution_greedy_cover(coverage_matrix, covering_set, probabilistic=False):
+def from_partial_solution_greedy_cover(coverage_matrix, covering_set, probabilistic=False, n_first=1):
     idx_covering_set = covering_set
     num_covered_edges = utils.get_asn_covered(covering_set)
     num_edges = coverage_matrix.shape[1]

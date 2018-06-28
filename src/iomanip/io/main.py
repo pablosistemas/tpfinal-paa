@@ -42,6 +42,7 @@ def read_bgp_file(nx_obj, input_file):
             line = file.readline()
             if 'ASPATH' in line:
                 match = re.findall(r'(\d+)\s+', line)
+                match.append(node.__asn_dst)
                 for asn in match:
                     global_var.asn_unordered_set.add(int(asn))
                 global_var.sets.append(map(int, match))

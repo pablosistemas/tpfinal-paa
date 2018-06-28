@@ -1,11 +1,9 @@
-import settings.main as global_var
 from algorithms.greedy.main import *
+import settings.main as global_var
 
 
 max_num_iterations_without_change = 10
 upper_bound_solution = 0
-
-PERCENT_OF_REMOVAL = 0.3
 
 FACTOR = 0.25
 TABU_LIST_SIZE = int(FACTOR * len(global_var.sets))
@@ -22,13 +20,13 @@ def insert_into_tabu_list(value):
 
 
 # solution_greedy MUST BE indexes of chosen sets
-def local_search(solution_greedy):
+def local_search(solution_greedy, percentage_of_removal, probabilistic=False, n_first=1):
     global upper_bound_solution, tabu_list
     upper_bound_solution = len(solution_greedy)
 
     solution = solution_greedy[:]
 
-    num_of_removal = int(len(solution) * PERCENT_OF_REMOVAL)
+    num_of_removal = int(len(solution) * percentage_of_removal)
 
     remove_idx = random.sample(solution, num_of_removal)
 
@@ -37,7 +35,8 @@ def local_search(solution_greedy):
 
     coverage_matrix = utils.from_candidate_solution_create_coverage_matrix(solution)
     updated_num_covered = utils.from_coverage_matrix_calculate_num_of_covered_asn(coverage_matrix)
-    idx_covering_set = from_partial_solution_greedy_cover(coverage_matrix, solution)
+    idx_covering_set = from_partial_solution_greedy_cover(coverage_matrix, solution, probabilistic, n_first)
+        
     return idx_covering_set
 
 

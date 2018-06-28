@@ -15,4 +15,8 @@ sets = []
 coverage_matrix = None
 
 # probabilisic algorithm parametrization
-N = 5
+N = 10 # default
+PERCENT_OF_PROBABILISTIC_CHOICES = 0.05
+
+# local search
+PERCENT_OF_REMOVAL = [0.25, 0.3, 0.4, 0.5]

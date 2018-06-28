@@ -9,7 +9,6 @@ CXPB = 0.7
 MUTPB = 0.2
 
 def ga():
-    
     random.seed(169)
 
     creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
